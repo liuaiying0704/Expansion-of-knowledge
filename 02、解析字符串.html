@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   需求：http://www.baidu.com?name=zhangsan&age=18&sex=nan#，
+      //   封装一个函数，将该地址里的参数解析出来
+      // http://www.baidu.com?name=zhangsan&age=18&sex=nan#
+      // 解析出:
+      // {name: 'zhangsan',age: 18, sex: 'nan' }
+      function getOject(url) {
+        let index1 = url.indexOf('?');
+        let index2 = url.indexOf('#');
+        let str = url.slice(index1 + 1, index2);
+        //   console.log(str); //?name=zhangsan&age=18&sex=nan  可slice(1)再去除？
+        let arr = str.split('&'); //['name=zhangsan', 'age=18', 'sex=nan']
+        let object = arr.reduce((pre, cur) => {
+          const [key, value] = cur.split('=');
+          pre[key] = value;
+          return pre;
+        }, {});
+        console.log(object);
+      }
+      //   调用
+      let url = `http://www.baidu.com?name=zhangsan&age=18&sex=nan#`;
+      getOject(url);
+    </script>
+  </body>
+</html>
