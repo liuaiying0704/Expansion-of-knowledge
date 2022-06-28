@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1、有初始值时 reduce()
+      let sum = [0, 1, 2, 3].reduce(function (previousValue, currentValue) {
+        return previousValue + currentValue;
+      }, 0);
+      console.log(sum);
+
+      let sum1 = [2, 3, 4, 4].reduce((preval, curval) => {
+        return preval + curval;
+      }, 0);
+      console.log(sum1);
+      //   let sum1 = [2, 3, 4, 4].reduce((preval, curval) => preval + curval
+      //   }, 0);
+      //   console.log(sum1);
+
+      //2、复杂类型
+      let arr = [{ a: 100 }, { a: 20 }, { a: -10 }];
+      let res = arr.reduce((preval, curval) => preval + curval.a, 0);
+      console.log(res);
+      //3、将二维数组转化为一维
+      let arr1 = [
+        [0, 1],
+        [2, 3],
+        [4, 5],
+      ];
+      let newArr = arr1.reduce(function (preval, curval) {
+        return preval.concat(curval);
+      }, []);
+      console.log(newArr);
+      //4、计算数组中每个元素出现的次数
+      let names = ['Alice', 'Bob', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+      let o = names.reduce(function (pre, cur) {
+        if (cur in pre) {
+          pre[cur]++;
+        } else {
+          pre[cur] = 1;
+        }
+        return pre;
+      }, {});
+      console.log(o);
+    </script>
+  </body>
+</html>
