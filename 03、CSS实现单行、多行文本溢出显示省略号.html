@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .ellipsis,
+    .multyLine_ellipsis {
+      width: 300px;
+      border: 5px solid royalblue;
+    }
+
+    /* 单行文本溢出显示省略号 .sin-line*/
+    .ellipsis {
+      /* 第一步：让文字强制一行显示 */
+      white-space: nowrap;
+      /* 第二步：溢出隐藏 */
+      overflow: hidden;
+      /* 第三步：溢出的内容省略号显示 */
+      text-overflow: ellipsis;
+    }
+
+    /* 多行文本溢出显示省略号   .mu-row */
+    .multyLine_ellipsis {
+      /* 允许单词内换行 */
+      word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      /* 开启盒子的弹性布局 */
+      display: -webkit-box;
+      /* 控制第几行出现省略号 */
+      -webkit-line-clamp: 2;
+      /* 设置子元素从上向下垂直排列 */
+      -webkit-box-orient: vertical;
+    }
+  </style>
+  <body>
+    <div class="ellipsis">
+      单行文本溢出显示省略号单行文本溢出显示省略号单行文本溢出显示省略号单行文本溢出显示省略号单行文本溢出显示省略号单行文本溢出显示省略号单行文本溢出显示省略号
+    </div>
+    <br /><br /><br /><br />
+    <div class="multyLine_ellipsis">
+      多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号多行文本显示省略号
+    </div>
+  </body>
+</html>
