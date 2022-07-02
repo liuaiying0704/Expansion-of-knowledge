@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fn() {
+        console.log(this); //window
+      }
+
+      const obj = {
+        name: 'test',
+        a() {
+          console.log(this.a);
+          //  ƒ a() {
+          //   console.log(this.a);
+          //   setTimeout(function () {
+          //     console.log(this.a); //undefined
+          //   }, 1000);
+          // }
+          setTimeout(function () {
+            console.log(this.a); //undefined
+          }, 1000);
+        },
+        b() {
+          console.log(this); //obj{} ,,调用者obj
+          fn();
+        },
+      };
+      obj.a();
+      obj.b();
+    </script>
+  </body>
+</html>

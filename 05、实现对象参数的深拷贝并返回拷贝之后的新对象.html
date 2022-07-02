@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 1.请补全JavaScript代码，要求实现对象参数的深拷贝并返回拷贝之后的新对象 -->
+    <script type="text/javascript">
+      //   深拷贝拷贝多层，每一级别都会拷贝
+      let obj = {
+        id: 1,
+        name: 'andy',
+        msg: { age: 18 },
+      };
+      let o = 0;
+      // 函数封装
+      function deepCopy(newObj, oldObj) {
+        for (let k in oldObj) {
+          // 1、获取属性值
+          let item = oldObj[k];
+          // 2、判断这个值是否是对象
+          if (item instanceof Array) {
+            newObj[k] = [];
+            deepCopy(newObj, item);
+          } else if (item instanceof Object) {
+            newObj[k] = {};
+            deepCopy(newObj[k], item);
+          } else {
+            newObj[k] = item;
+          }
+        }
+      }
+      deepCopy(o, obj);
+      console.log(o);
+
+      // map
+      function deepCopy(obj) {
+        var tempTool = Array.isArray(obj) ? [] : {};
+        for (const key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            tempTool[key] =
+              typeof obj[key] === 'object'
+                ? deepCopy(obj[key])
+                : Array.isArray(obj)
+                ? Array.prototype.concat(obj[key])
+                : obj[key];
+          }
+        }
+        return tempTool;
+      }
+
+      var testObj = {
+        name: 'currName',
+        nums: [1, [2, 3]],
+        objs: {
+          innerObj: 'content',
+        },
+      };
+      var secObj = deepCopy(testObj);
+      secObj.name = 'changedName';
+      secObj.nums[0] = '一';
+      secObj.nums[1] = ['二', '三'];
+      secObj.objs['innerObj'] = 'changedContent';
+      secObj.age = 18;
+      console.log(testObj); // { name: 'currName',
+      //   nums: [ 1, [ 2, 3 ] ],
+      //   objs: { innerObj: 'content' } }
+      console.log(secObj); // { name: 'changedName',
+      //   nums: [ '一', [ '二', '三' ] ],
+      //   objs: { innerObj: 'changedContent' },
+      //   age: 18 }
+    </script>
+  </body>
+</html>

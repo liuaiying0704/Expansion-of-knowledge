@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = {
+        age: 12,
+        uname: '老王',
+        msg: {
+          age: 18,
+        },
+      };
+      let o = {};
+      for (var k in obj) {
+        o[k] = obj[k];
+      }
+
+      console.log(o);
+      o.msg.age = 20;
+      console.log(obj);
+
+      //   浅拷贝只拷贝一层，深层次的层次的只拷贝引用
+      //   深拷贝拷贝多层，每一级别都会拷贝
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function new_instance_of(leftVaule, rightVaule) {
+        let rightProto = rightVaule.prototype;
+        leftVaule = leftVaule.__proto__; // 取左表达式的__proto__值
+        while (true) {
+          if (leftVaule === null) {
+            return false;
+          }
+          if (leftVaule === rightProto) {
+            return true;
+          }
+          leftVaule = leftVaule.__proto__;
+        }
+      }
+      console.log(new_instance_of([], Array));
+
+      console.log(new_instance_of([], Object));
+    </script>
+  </body>
+</html>
